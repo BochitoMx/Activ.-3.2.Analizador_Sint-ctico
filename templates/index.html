@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador Léxico y Sintáctico</title>
+    <style>
+        body {
+            background-color: #38B6FF; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: black;
+            font-size: 25px;
+            font-weight: lighter;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%; 
+            margin: 20px auto;
+            max-width: 1200px; 
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); 
+            background-color: transparent; 
+        }
+        .textarea-container {
+            width: 80%; 
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%; 
+            height: 200px; 
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: white;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center; 
+            width: 50%; 
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+        .btn-analizar {
+            background-color: #28a745; 
+            border: none;
+        }
+        .btn-limpiar {
+            background-color: #dc3545; 
+            border: none;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .result-container {
+            width: 90%; 
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            overflow: auto;
+            font-size: 18px;
+            line-height: 1.6;
+            background-color: transparent; 
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; 
+            font-size: 16px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid black; 
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .table thead tr, th {
+            background-color: #28a745;
+        }
+        .Lineas {
+            background-color: #d0ff00;
+            color: black;
+        }
+        .table thead tr tbody tr, td {
+            background-color: gray;
+            color: white;
+        }
+
+        .subtitulo {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px; 
+            margin-bottom: 10px; 
+            color: black;
+        }
+
+        .result-sintactico {
+            margin-top: 30px; 
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: white; 
+        }
+        .error {
+            color: red; 
+        }
+    </style>
+</head>
+<body>
+    <h1>ANALIZADOR LÉXICO Y SINTÁCTICO</h1>
+    <h2>LIC. BOCHO</h2>
+
+    <form method="POST">
+        <div class="container">
+
+            <div class="textarea-container">
+                <textarea name="codigo" placeholder="Ingrese el código..."></textarea>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="btn btn-analizar">ANALIZAR</button>
+
+            </div>
+
+            <div class="subtitulo">ANALIZADOR LÉXICO</div>
+
+            <div class="result-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>LINEAS</th>
+                            <th>SIMBOLO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for linea, tokens in resultado_lexico %}
+                        <tr>
+                            <td class="Lineas" colspan="2"><strong>{{ linea }}:</strong></td>
+                        </tr>
+                        {% for token in tokens %}
+                        <tr>
+                            <td>{{ token[0] }}</td> 
+                            <td>{{ token[1] }}</td> 
+                        </tr>
+                        {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="subtitulo">ANALIZADOR SINTÁCTICO</div>
+
+            <div class="result-sintactico">
+                {% if resultado_sintactico %}
+                    <ul>
+                        {% for mensaje in resultado_sintactico %}
+                            <li class="{{ 'error' if 'Error' in mensaje else '' }}">{{ mensaje }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No se encontraron errores de sintaxis.</p>
+                {% endif %}
+            </div>                       
+        </div>
+    </form>
+</body>
+</html>

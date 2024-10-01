@@ -1,0 +1,1920 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMDOB
+    CORDER
+    CORIZQ
+    ENTERO
+    FOR
+    IF
+    LLADER
+    LLAIZQ
+    LLAVE_APERTURA
+    LLAVE_CIERRE
+    MAIN
+    PARDER
+    PARIZQ
+    POTENCIA
+    RETURN
+    WHILE
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> declaracion main
+Rule 2     main -> tipo IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CIERRE bloque
+Rule 3     bloque -> declaracion bloque
+Rule 4     bloque -> declaracion
+Rule 5     bloque -> PARENTESIS_APERTURA PARENTESIS_CIERRE
+Rule 6     declaracion -> tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA
+Rule 7     tipo -> INT
+Rule 8     tipo -> FLOAT
+Rule 9     tipo -> CHAR
+Rule 10    tipo -> DOUBLE
+Rule 11    tipo -> VOID
+Rule 12    expresion -> expresion SUMA expresion
+Rule 13    expresion -> expresion RESTA expresion
+Rule 14    expresion -> expresion MULT expresion
+Rule 15    expresion -> expresion DIV expresion
+Rule 16    expresion -> expresion MODULO expresion
+Rule 17    expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+Rule 18    expresion -> IDENTIFICADOR
+Rule 19    expresion -> NUMERO
+Rule 20    expresion -> UMINUS expresion
+Rule 21    expresion -> expresion MENORQUE expresion
+Rule 22    expresion -> expresion MAYORQUE expresion
+Rule 23    expresion -> expresion MENORIGUAL expresion
+Rule 24    expresion -> expresion MAYORIGUAL expresion
+Rule 25    expresion -> expresion IGUAL expresion
+Rule 26    expresion -> expresion DISTINTO expresion
+Rule 27    expresion -> expresion AND expresion
+Rule 28    expresion -> expresion OR expresion
+Rule 29    expresion -> NOT expresion
+
+Terminals, with rules where they appear
+
+AND                  : 27
+ASIGNAR              : 6
+CHAR                 : 9
+COMDOB               : 
+CORDER               : 
+CORIZQ               : 
+DISTINTO             : 26
+DIV                  : 15
+DOUBLE               : 10
+ENTERO               : 
+FLOAT                : 8
+FOR                  : 
+IDENTIFICADOR        : 2 6 18
+IF                   : 
+IGUAL                : 25
+INT                  : 7
+LLADER               : 
+LLAIZQ               : 
+LLAVE_APERTURA       : 
+LLAVE_CIERRE         : 
+MAIN                 : 
+MAYORIGUAL           : 24
+MAYORQUE             : 22
+MENORIGUAL           : 23
+MENORQUE             : 21
+MODULO               : 16
+MULT                 : 14
+NOT                  : 29
+NUMERO               : 19
+OR                   : 28
+PARDER               : 
+PARENTESIS_APERTURA  : 2 5 17
+PARENTESIS_CIERRE    : 2 5 17
+PARIZQ               : 
+POTENCIA             : 
+PUNTOYCOMA           : 6
+RESTA                : 13
+RETURN               : 
+SUMA                 : 12
+UMINUS               : 20
+VOID                 : 11
+WHILE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+bloque               : 2 3
+declaracion          : 1 3 4
+expresion            : 6 12 12 13 13 14 14 15 15 16 16 17 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29
+main                 : 1
+programa             : 0
+tipo                 : 2 6
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . declaracion main
+    (6) declaracion -> . tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA
+    (7) tipo -> . INT
+    (8) tipo -> . FLOAT
+    (9) tipo -> . CHAR
+    (10) tipo -> . DOUBLE
+    (11) tipo -> . VOID
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    CHAR            shift and go to state 6
+    DOUBLE          shift and go to state 7
+    VOID            shift and go to state 8
+
+    programa                       shift and go to state 1
+    declaracion                    shift and go to state 2
+    tipo                           shift and go to state 3
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> declaracion . main
+    (2) main -> . tipo IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CIERRE bloque
+    (7) tipo -> . INT
+    (8) tipo -> . FLOAT
+    (9) tipo -> . CHAR
+    (10) tipo -> . DOUBLE
+    (11) tipo -> . VOID
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    CHAR            shift and go to state 6
+    DOUBLE          shift and go to state 7
+    VOID            shift and go to state 8
+
+    main                           shift and go to state 9
+    tipo                           shift and go to state 10
+
+state 3
+
+    (6) declaracion -> tipo . IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA
+
+    IDENTIFICADOR   shift and go to state 11
+
+
+state 4
+
+    (7) tipo -> INT .
+
+    IDENTIFICADOR   reduce using rule 7 (tipo -> INT .)
+
+
+state 5
+
+    (8) tipo -> FLOAT .
+
+    IDENTIFICADOR   reduce using rule 8 (tipo -> FLOAT .)
+
+
+state 6
+
+    (9) tipo -> CHAR .
+
+    IDENTIFICADOR   reduce using rule 9 (tipo -> CHAR .)
+
+
+state 7
+
+    (10) tipo -> DOUBLE .
+
+    IDENTIFICADOR   reduce using rule 10 (tipo -> DOUBLE .)
+
+
+state 8
+
+    (11) tipo -> VOID .
+
+    IDENTIFICADOR   reduce using rule 11 (tipo -> VOID .)
+
+
+state 9
+
+    (1) programa -> declaracion main .
+
+    $end            reduce using rule 1 (programa -> declaracion main .)
+
+
+state 10
+
+    (2) main -> tipo . IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CIERRE bloque
+
+    IDENTIFICADOR   shift and go to state 12
+
+
+state 11
+
+    (6) declaracion -> tipo IDENTIFICADOR . ASIGNAR expresion PUNTOYCOMA
+
+    ASIGNAR         shift and go to state 13
+
+
+state 12
+
+    (2) main -> tipo IDENTIFICADOR . PARENTESIS_APERTURA PARENTESIS_CIERRE bloque
+
+    PARENTESIS_APERTURA shift and go to state 14
+
+
+state 13
+
+    (6) declaracion -> tipo IDENTIFICADOR ASIGNAR . expresion PUNTOYCOMA
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 16
+
+state 14
+
+    (2) main -> tipo IDENTIFICADOR PARENTESIS_APERTURA . PARENTESIS_CIERRE bloque
+
+    PARENTESIS_CIERRE shift and go to state 21
+
+
+state 15
+
+    (18) expresion -> IDENTIFICADOR .
+
+    PUNTOYCOMA      reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    SUMA            reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    RESTA           reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    MULT            reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    DIV             reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    MODULO          reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    MENORQUE        reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    MAYORQUE        reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    MENORIGUAL      reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    MAYORIGUAL      reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    IGUAL           reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    DISTINTO        reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    AND             reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    OR              reduce using rule 18 (expresion -> IDENTIFICADOR .)
+    PARENTESIS_CIERRE reduce using rule 18 (expresion -> IDENTIFICADOR .)
+
+
+state 16
+
+    (6) declaracion -> tipo IDENTIFICADOR ASIGNAR expresion . PUNTOYCOMA
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+    PUNTOYCOMA      shift and go to state 22
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+
+state 17
+
+    (17) expresion -> PARENTESIS_APERTURA . expresion PARENTESIS_CIERRE
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 36
+
+state 18
+
+    (19) expresion -> NUMERO .
+
+    PUNTOYCOMA      reduce using rule 19 (expresion -> NUMERO .)
+    SUMA            reduce using rule 19 (expresion -> NUMERO .)
+    RESTA           reduce using rule 19 (expresion -> NUMERO .)
+    MULT            reduce using rule 19 (expresion -> NUMERO .)
+    DIV             reduce using rule 19 (expresion -> NUMERO .)
+    MODULO          reduce using rule 19 (expresion -> NUMERO .)
+    MENORQUE        reduce using rule 19 (expresion -> NUMERO .)
+    MAYORQUE        reduce using rule 19 (expresion -> NUMERO .)
+    MENORIGUAL      reduce using rule 19 (expresion -> NUMERO .)
+    MAYORIGUAL      reduce using rule 19 (expresion -> NUMERO .)
+    IGUAL           reduce using rule 19 (expresion -> NUMERO .)
+    DISTINTO        reduce using rule 19 (expresion -> NUMERO .)
+    AND             reduce using rule 19 (expresion -> NUMERO .)
+    OR              reduce using rule 19 (expresion -> NUMERO .)
+    PARENTESIS_CIERRE reduce using rule 19 (expresion -> NUMERO .)
+
+
+state 19
+
+    (20) expresion -> UMINUS . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 37
+
+state 20
+
+    (29) expresion -> NOT . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 38
+
+state 21
+
+    (2) main -> tipo IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CIERRE . bloque
+    (3) bloque -> . declaracion bloque
+    (4) bloque -> . declaracion
+    (5) bloque -> . PARENTESIS_APERTURA PARENTESIS_CIERRE
+    (6) declaracion -> . tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA
+    (7) tipo -> . INT
+    (8) tipo -> . FLOAT
+    (9) tipo -> . CHAR
+    (10) tipo -> . DOUBLE
+    (11) tipo -> . VOID
+
+    PARENTESIS_APERTURA shift and go to state 39
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    CHAR            shift and go to state 6
+    DOUBLE          shift and go to state 7
+    VOID            shift and go to state 8
+
+    tipo                           shift and go to state 3
+    bloque                         shift and go to state 40
+    declaracion                    shift and go to state 41
+
+state 22
+
+    (6) declaracion -> tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA .
+
+    INT             reduce using rule 6 (declaracion -> tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA .)
+    FLOAT           reduce using rule 6 (declaracion -> tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA .)
+    CHAR            reduce using rule 6 (declaracion -> tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA .)
+    DOUBLE          reduce using rule 6 (declaracion -> tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA .)
+    VOID            reduce using rule 6 (declaracion -> tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA .)
+    PARENTESIS_APERTURA reduce using rule 6 (declaracion -> tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA .)
+    $end            reduce using rule 6 (declaracion -> tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA .)
+
+
+state 23
+
+    (12) expresion -> expresion SUMA . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 42
+
+state 24
+
+    (13) expresion -> expresion RESTA . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 43
+
+state 25
+
+    (14) expresion -> expresion MULT . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 44
+
+state 26
+
+    (15) expresion -> expresion DIV . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 45
+
+state 27
+
+    (16) expresion -> expresion MODULO . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 46
+
+state 28
+
+    (21) expresion -> expresion MENORQUE . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 47
+
+state 29
+
+    (22) expresion -> expresion MAYORQUE . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 48
+
+state 30
+
+    (23) expresion -> expresion MENORIGUAL . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 49
+
+state 31
+
+    (24) expresion -> expresion MAYORIGUAL . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 50
+
+state 32
+
+    (25) expresion -> expresion IGUAL . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 51
+
+state 33
+
+    (26) expresion -> expresion DISTINTO . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 52
+
+state 34
+
+    (27) expresion -> expresion AND . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 53
+
+state 35
+
+    (28) expresion -> expresion OR . expresion
+    (12) expresion -> . expresion SUMA expresion
+    (13) expresion -> . expresion RESTA expresion
+    (14) expresion -> . expresion MULT expresion
+    (15) expresion -> . expresion DIV expresion
+    (16) expresion -> . expresion MODULO expresion
+    (17) expresion -> . PARENTESIS_APERTURA expresion PARENTESIS_CIERRE
+    (18) expresion -> . IDENTIFICADOR
+    (19) expresion -> . NUMERO
+    (20) expresion -> . UMINUS expresion
+    (21) expresion -> . expresion MENORQUE expresion
+    (22) expresion -> . expresion MAYORQUE expresion
+    (23) expresion -> . expresion MENORIGUAL expresion
+    (24) expresion -> . expresion MAYORIGUAL expresion
+    (25) expresion -> . expresion IGUAL expresion
+    (26) expresion -> . expresion DISTINTO expresion
+    (27) expresion -> . expresion AND expresion
+    (28) expresion -> . expresion OR expresion
+    (29) expresion -> . NOT expresion
+
+    PARENTESIS_APERTURA shift and go to state 17
+    IDENTIFICADOR   shift and go to state 15
+    NUMERO          shift and go to state 18
+    UMINUS          shift and go to state 19
+    NOT             shift and go to state 20
+
+    expresion                      shift and go to state 54
+
+state 36
+
+    (17) expresion -> PARENTESIS_APERTURA expresion . PARENTESIS_CIERRE
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+    PARENTESIS_CIERRE shift and go to state 55
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+
+state 37
+
+    (20) expresion -> UMINUS expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+    PUNTOYCOMA      reduce using rule 20 (expresion -> UMINUS expresion .)
+    SUMA            reduce using rule 20 (expresion -> UMINUS expresion .)
+    RESTA           reduce using rule 20 (expresion -> UMINUS expresion .)
+    MULT            reduce using rule 20 (expresion -> UMINUS expresion .)
+    DIV             reduce using rule 20 (expresion -> UMINUS expresion .)
+    MODULO          reduce using rule 20 (expresion -> UMINUS expresion .)
+    MENORQUE        reduce using rule 20 (expresion -> UMINUS expresion .)
+    MAYORQUE        reduce using rule 20 (expresion -> UMINUS expresion .)
+    MENORIGUAL      reduce using rule 20 (expresion -> UMINUS expresion .)
+    MAYORIGUAL      reduce using rule 20 (expresion -> UMINUS expresion .)
+    IGUAL           reduce using rule 20 (expresion -> UMINUS expresion .)
+    DISTINTO        reduce using rule 20 (expresion -> UMINUS expresion .)
+    AND             reduce using rule 20 (expresion -> UMINUS expresion .)
+    OR              reduce using rule 20 (expresion -> UMINUS expresion .)
+    PARENTESIS_CIERRE reduce using rule 20 (expresion -> UMINUS expresion .)
+
+  ! SUMA            [ shift and go to state 23 ]
+  ! RESTA           [ shift and go to state 24 ]
+  ! MULT            [ shift and go to state 25 ]
+  ! DIV             [ shift and go to state 26 ]
+  ! MODULO          [ shift and go to state 27 ]
+  ! MENORQUE        [ shift and go to state 28 ]
+  ! MAYORQUE        [ shift and go to state 29 ]
+  ! MENORIGUAL      [ shift and go to state 30 ]
+  ! MAYORIGUAL      [ shift and go to state 31 ]
+  ! IGUAL           [ shift and go to state 32 ]
+  ! DISTINTO        [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+
+
+state 38
+
+    (29) expresion -> NOT expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MODULO resolved as shift
+  ! shift/reduce conflict for MENORQUE resolved as shift
+  ! shift/reduce conflict for MAYORQUE resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PUNTOYCOMA      reduce using rule 29 (expresion -> NOT expresion .)
+    PARENTESIS_CIERRE reduce using rule 29 (expresion -> NOT expresion .)
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+  ! SUMA            [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! RESTA           [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! MULT            [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! DIV             [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! MODULO          [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! MENORQUE        [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! MAYORQUE        [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! IGUAL           [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! DISTINTO        [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! AND             [ reduce using rule 29 (expresion -> NOT expresion .) ]
+  ! OR              [ reduce using rule 29 (expresion -> NOT expresion .) ]
+
+
+state 39
+
+    (5) bloque -> PARENTESIS_APERTURA . PARENTESIS_CIERRE
+
+    PARENTESIS_CIERRE shift and go to state 56
+
+
+state 40
+
+    (2) main -> tipo IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CIERRE bloque .
+
+    $end            reduce using rule 2 (main -> tipo IDENTIFICADOR PARENTESIS_APERTURA PARENTESIS_CIERRE bloque .)
+
+
+state 41
+
+    (3) bloque -> declaracion . bloque
+    (4) bloque -> declaracion .
+    (3) bloque -> . declaracion bloque
+    (4) bloque -> . declaracion
+    (5) bloque -> . PARENTESIS_APERTURA PARENTESIS_CIERRE
+    (6) declaracion -> . tipo IDENTIFICADOR ASIGNAR expresion PUNTOYCOMA
+    (7) tipo -> . INT
+    (8) tipo -> . FLOAT
+    (9) tipo -> . CHAR
+    (10) tipo -> . DOUBLE
+    (11) tipo -> . VOID
+
+    $end            reduce using rule 4 (bloque -> declaracion .)
+    PARENTESIS_APERTURA shift and go to state 39
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    CHAR            shift and go to state 6
+    DOUBLE          shift and go to state 7
+    VOID            shift and go to state 8
+
+    declaracion                    shift and go to state 41
+    bloque                         shift and go to state 57
+    tipo                           shift and go to state 3
+
+state 42
+
+    (12) expresion -> expresion SUMA expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+    PUNTOYCOMA      reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    SUMA            reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    RESTA           reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    MENORQUE        reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    MAYORQUE        reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    MENORIGUAL      reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    MAYORIGUAL      reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    IGUAL           reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    DISTINTO        reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    AND             reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    OR              reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    PARENTESIS_CIERRE reduce using rule 12 (expresion -> expresion SUMA expresion .)
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+
+  ! MULT            [ reduce using rule 12 (expresion -> expresion SUMA expresion .) ]
+  ! DIV             [ reduce using rule 12 (expresion -> expresion SUMA expresion .) ]
+  ! MODULO          [ reduce using rule 12 (expresion -> expresion SUMA expresion .) ]
+  ! SUMA            [ shift and go to state 23 ]
+  ! RESTA           [ shift and go to state 24 ]
+  ! MENORQUE        [ shift and go to state 28 ]
+  ! MAYORQUE        [ shift and go to state 29 ]
+  ! MENORIGUAL      [ shift and go to state 30 ]
+  ! MAYORIGUAL      [ shift and go to state 31 ]
+  ! IGUAL           [ shift and go to state 32 ]
+  ! DISTINTO        [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+
+
+state 43
+
+    (13) expresion -> expresion RESTA expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+    PUNTOYCOMA      reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    SUMA            reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    RESTA           reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    MENORQUE        reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    MAYORQUE        reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    MENORIGUAL      reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    MAYORIGUAL      reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    IGUAL           reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    DISTINTO        reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    AND             reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    OR              reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    PARENTESIS_CIERRE reduce using rule 13 (expresion -> expresion RESTA expresion .)
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+
+  ! MULT            [ reduce using rule 13 (expresion -> expresion RESTA expresion .) ]
+  ! DIV             [ reduce using rule 13 (expresion -> expresion RESTA expresion .) ]
+  ! MODULO          [ reduce using rule 13 (expresion -> expresion RESTA expresion .) ]
+  ! SUMA            [ shift and go to state 23 ]
+  ! RESTA           [ shift and go to state 24 ]
+  ! MENORQUE        [ shift and go to state 28 ]
+  ! MAYORQUE        [ shift and go to state 29 ]
+  ! MENORIGUAL      [ shift and go to state 30 ]
+  ! MAYORIGUAL      [ shift and go to state 31 ]
+  ! IGUAL           [ shift and go to state 32 ]
+  ! DISTINTO        [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+
+
+state 44
+
+    (14) expresion -> expresion MULT expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+    PUNTOYCOMA      reduce using rule 14 (expresion -> expresion MULT expresion .)
+    SUMA            reduce using rule 14 (expresion -> expresion MULT expresion .)
+    RESTA           reduce using rule 14 (expresion -> expresion MULT expresion .)
+    MULT            reduce using rule 14 (expresion -> expresion MULT expresion .)
+    DIV             reduce using rule 14 (expresion -> expresion MULT expresion .)
+    MODULO          reduce using rule 14 (expresion -> expresion MULT expresion .)
+    MENORQUE        reduce using rule 14 (expresion -> expresion MULT expresion .)
+    MAYORQUE        reduce using rule 14 (expresion -> expresion MULT expresion .)
+    MENORIGUAL      reduce using rule 14 (expresion -> expresion MULT expresion .)
+    MAYORIGUAL      reduce using rule 14 (expresion -> expresion MULT expresion .)
+    IGUAL           reduce using rule 14 (expresion -> expresion MULT expresion .)
+    DISTINTO        reduce using rule 14 (expresion -> expresion MULT expresion .)
+    AND             reduce using rule 14 (expresion -> expresion MULT expresion .)
+    OR              reduce using rule 14 (expresion -> expresion MULT expresion .)
+    PARENTESIS_CIERRE reduce using rule 14 (expresion -> expresion MULT expresion .)
+
+  ! SUMA            [ shift and go to state 23 ]
+  ! RESTA           [ shift and go to state 24 ]
+  ! MULT            [ shift and go to state 25 ]
+  ! DIV             [ shift and go to state 26 ]
+  ! MODULO          [ shift and go to state 27 ]
+  ! MENORQUE        [ shift and go to state 28 ]
+  ! MAYORQUE        [ shift and go to state 29 ]
+  ! MENORIGUAL      [ shift and go to state 30 ]
+  ! MAYORIGUAL      [ shift and go to state 31 ]
+  ! IGUAL           [ shift and go to state 32 ]
+  ! DISTINTO        [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+
+
+state 45
+
+    (15) expresion -> expresion DIV expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+    PUNTOYCOMA      reduce using rule 15 (expresion -> expresion DIV expresion .)
+    SUMA            reduce using rule 15 (expresion -> expresion DIV expresion .)
+    RESTA           reduce using rule 15 (expresion -> expresion DIV expresion .)
+    MULT            reduce using rule 15 (expresion -> expresion DIV expresion .)
+    DIV             reduce using rule 15 (expresion -> expresion DIV expresion .)
+    MODULO          reduce using rule 15 (expresion -> expresion DIV expresion .)
+    MENORQUE        reduce using rule 15 (expresion -> expresion DIV expresion .)
+    MAYORQUE        reduce using rule 15 (expresion -> expresion DIV expresion .)
+    MENORIGUAL      reduce using rule 15 (expresion -> expresion DIV expresion .)
+    MAYORIGUAL      reduce using rule 15 (expresion -> expresion DIV expresion .)
+    IGUAL           reduce using rule 15 (expresion -> expresion DIV expresion .)
+    DISTINTO        reduce using rule 15 (expresion -> expresion DIV expresion .)
+    AND             reduce using rule 15 (expresion -> expresion DIV expresion .)
+    OR              reduce using rule 15 (expresion -> expresion DIV expresion .)
+    PARENTESIS_CIERRE reduce using rule 15 (expresion -> expresion DIV expresion .)
+
+  ! SUMA            [ shift and go to state 23 ]
+  ! RESTA           [ shift and go to state 24 ]
+  ! MULT            [ shift and go to state 25 ]
+  ! DIV             [ shift and go to state 26 ]
+  ! MODULO          [ shift and go to state 27 ]
+  ! MENORQUE        [ shift and go to state 28 ]
+  ! MAYORQUE        [ shift and go to state 29 ]
+  ! MENORIGUAL      [ shift and go to state 30 ]
+  ! MAYORIGUAL      [ shift and go to state 31 ]
+  ! IGUAL           [ shift and go to state 32 ]
+  ! DISTINTO        [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+
+
+state 46
+
+    (16) expresion -> expresion MODULO expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+    PUNTOYCOMA      reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    SUMA            reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    RESTA           reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    MULT            reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    DIV             reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    MODULO          reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    MENORQUE        reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    MAYORQUE        reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    MENORIGUAL      reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    MAYORIGUAL      reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    IGUAL           reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    DISTINTO        reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    AND             reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    OR              reduce using rule 16 (expresion -> expresion MODULO expresion .)
+    PARENTESIS_CIERRE reduce using rule 16 (expresion -> expresion MODULO expresion .)
+
+  ! SUMA            [ shift and go to state 23 ]
+  ! RESTA           [ shift and go to state 24 ]
+  ! MULT            [ shift and go to state 25 ]
+  ! DIV             [ shift and go to state 26 ]
+  ! MODULO          [ shift and go to state 27 ]
+  ! MENORQUE        [ shift and go to state 28 ]
+  ! MAYORQUE        [ shift and go to state 29 ]
+  ! MENORIGUAL      [ shift and go to state 30 ]
+  ! MAYORIGUAL      [ shift and go to state 31 ]
+  ! IGUAL           [ shift and go to state 32 ]
+  ! DISTINTO        [ shift and go to state 33 ]
+  ! AND             [ shift and go to state 34 ]
+  ! OR              [ shift and go to state 35 ]
+
+
+state 47
+
+    (21) expresion -> expresion MENORQUE expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MODULO resolved as shift
+  ! shift/reduce conflict for MENORQUE resolved as shift
+  ! shift/reduce conflict for MAYORQUE resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PUNTOYCOMA      reduce using rule 21 (expresion -> expresion MENORQUE expresion .)
+    PARENTESIS_CIERRE reduce using rule 21 (expresion -> expresion MENORQUE expresion .)
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+  ! SUMA            [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! RESTA           [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! MULT            [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! DIV             [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! MODULO          [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! MENORQUE        [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! MAYORQUE        [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! IGUAL           [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! DISTINTO        [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! AND             [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+  ! OR              [ reduce using rule 21 (expresion -> expresion MENORQUE expresion .) ]
+
+
+state 48
+
+    (22) expresion -> expresion MAYORQUE expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MODULO resolved as shift
+  ! shift/reduce conflict for MENORQUE resolved as shift
+  ! shift/reduce conflict for MAYORQUE resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PUNTOYCOMA      reduce using rule 22 (expresion -> expresion MAYORQUE expresion .)
+    PARENTESIS_CIERRE reduce using rule 22 (expresion -> expresion MAYORQUE expresion .)
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+  ! SUMA            [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! RESTA           [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MULT            [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! DIV             [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MODULO          [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MENORQUE        [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MAYORQUE        [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! IGUAL           [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! DISTINTO        [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! AND             [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+  ! OR              [ reduce using rule 22 (expresion -> expresion MAYORQUE expresion .) ]
+
+
+state 49
+
+    (23) expresion -> expresion MENORIGUAL expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MODULO resolved as shift
+  ! shift/reduce conflict for MENORQUE resolved as shift
+  ! shift/reduce conflict for MAYORQUE resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PUNTOYCOMA      reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .)
+    PARENTESIS_CIERRE reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .)
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+  ! SUMA            [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! RESTA           [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MULT            [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MODULO          [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MENORQUE        [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MAYORQUE        [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! IGUAL           [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! DISTINTO        [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! AND             [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! OR              [ reduce using rule 23 (expresion -> expresion MENORIGUAL expresion .) ]
+
+
+state 50
+
+    (24) expresion -> expresion MAYORIGUAL expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MODULO resolved as shift
+  ! shift/reduce conflict for MENORQUE resolved as shift
+  ! shift/reduce conflict for MAYORQUE resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PUNTOYCOMA      reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .)
+    PARENTESIS_CIERRE reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .)
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+  ! SUMA            [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! RESTA           [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MULT            [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MODULO          [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MENORQUE        [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MAYORQUE        [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! IGUAL           [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! DISTINTO        [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! AND             [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! OR              [ reduce using rule 24 (expresion -> expresion MAYORIGUAL expresion .) ]
+
+
+state 51
+
+    (25) expresion -> expresion IGUAL expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MODULO resolved as shift
+  ! shift/reduce conflict for MENORQUE resolved as shift
+  ! shift/reduce conflict for MAYORQUE resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PUNTOYCOMA      reduce using rule 25 (expresion -> expresion IGUAL expresion .)
+    PARENTESIS_CIERRE reduce using rule 25 (expresion -> expresion IGUAL expresion .)
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+  ! SUMA            [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! RESTA           [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! MULT            [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! DIV             [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! MODULO          [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! MENORQUE        [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! MAYORQUE        [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! IGUAL           [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! DISTINTO        [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! AND             [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+  ! OR              [ reduce using rule 25 (expresion -> expresion IGUAL expresion .) ]
+
+
+state 52
+
+    (26) expresion -> expresion DISTINTO expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MODULO resolved as shift
+  ! shift/reduce conflict for MENORQUE resolved as shift
+  ! shift/reduce conflict for MAYORQUE resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PUNTOYCOMA      reduce using rule 26 (expresion -> expresion DISTINTO expresion .)
+    PARENTESIS_CIERRE reduce using rule 26 (expresion -> expresion DISTINTO expresion .)
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+  ! SUMA            [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! RESTA           [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! MULT            [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! DIV             [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! MODULO          [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! MENORQUE        [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! MAYORQUE        [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! IGUAL           [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! DISTINTO        [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! AND             [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+  ! OR              [ reduce using rule 26 (expresion -> expresion DISTINTO expresion .) ]
+
+
+state 53
+
+    (27) expresion -> expresion AND expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MODULO resolved as shift
+  ! shift/reduce conflict for MENORQUE resolved as shift
+  ! shift/reduce conflict for MAYORQUE resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PUNTOYCOMA      reduce using rule 27 (expresion -> expresion AND expresion .)
+    PARENTESIS_CIERRE reduce using rule 27 (expresion -> expresion AND expresion .)
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+  ! SUMA            [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! RESTA           [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! MULT            [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! DIV             [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! MODULO          [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! MENORQUE        [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! MAYORQUE        [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! IGUAL           [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! DISTINTO        [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! AND             [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+  ! OR              [ reduce using rule 27 (expresion -> expresion AND expresion .) ]
+
+
+state 54
+
+    (28) expresion -> expresion OR expresion .
+    (12) expresion -> expresion . SUMA expresion
+    (13) expresion -> expresion . RESTA expresion
+    (14) expresion -> expresion . MULT expresion
+    (15) expresion -> expresion . DIV expresion
+    (16) expresion -> expresion . MODULO expresion
+    (21) expresion -> expresion . MENORQUE expresion
+    (22) expresion -> expresion . MAYORQUE expresion
+    (23) expresion -> expresion . MENORIGUAL expresion
+    (24) expresion -> expresion . MAYORIGUAL expresion
+    (25) expresion -> expresion . IGUAL expresion
+    (26) expresion -> expresion . DISTINTO expresion
+    (27) expresion -> expresion . AND expresion
+    (28) expresion -> expresion . OR expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULT resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MODULO resolved as shift
+  ! shift/reduce conflict for MENORQUE resolved as shift
+  ! shift/reduce conflict for MAYORQUE resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PUNTOYCOMA      reduce using rule 28 (expresion -> expresion OR expresion .)
+    PARENTESIS_CIERRE reduce using rule 28 (expresion -> expresion OR expresion .)
+    SUMA            shift and go to state 23
+    RESTA           shift and go to state 24
+    MULT            shift and go to state 25
+    DIV             shift and go to state 26
+    MODULO          shift and go to state 27
+    MENORQUE        shift and go to state 28
+    MAYORQUE        shift and go to state 29
+    MENORIGUAL      shift and go to state 30
+    MAYORIGUAL      shift and go to state 31
+    IGUAL           shift and go to state 32
+    DISTINTO        shift and go to state 33
+    AND             shift and go to state 34
+    OR              shift and go to state 35
+
+  ! SUMA            [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! RESTA           [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! MULT            [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! DIV             [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! MODULO          [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! MENORQUE        [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! MAYORQUE        [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! IGUAL           [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! DISTINTO        [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! AND             [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+  ! OR              [ reduce using rule 28 (expresion -> expresion OR expresion .) ]
+
+
+state 55
+
+    (17) expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .
+
+    PUNTOYCOMA      reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    SUMA            reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    RESTA           reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    MULT            reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    DIV             reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    MODULO          reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    MENORQUE        reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    MAYORQUE        reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    MENORIGUAL      reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    MAYORIGUAL      reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    IGUAL           reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    DISTINTO        reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    AND             reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    OR              reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+    PARENTESIS_CIERRE reduce using rule 17 (expresion -> PARENTESIS_APERTURA expresion PARENTESIS_CIERRE .)
+
+
+state 56
+
+    (5) bloque -> PARENTESIS_APERTURA PARENTESIS_CIERRE .
+
+    $end            reduce using rule 5 (bloque -> PARENTESIS_APERTURA PARENTESIS_CIERRE .)
+
+
+state 57
+
+    (3) bloque -> declaracion bloque .
+
+    $end            reduce using rule 3 (bloque -> declaracion bloque .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for SUMA in state 38 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 38 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 38 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 38 resolved as shift
+WARNING: shift/reduce conflict for MODULO in state 38 resolved as shift
+WARNING: shift/reduce conflict for MENORQUE in state 38 resolved as shift
+WARNING: shift/reduce conflict for MAYORQUE in state 38 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 38 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 38 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 38 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 38 resolved as shift
+WARNING: shift/reduce conflict for AND in state 38 resolved as shift
+WARNING: shift/reduce conflict for OR in state 38 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 47 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 47 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 47 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 47 resolved as shift
+WARNING: shift/reduce conflict for MODULO in state 47 resolved as shift
+WARNING: shift/reduce conflict for MENORQUE in state 47 resolved as shift
+WARNING: shift/reduce conflict for MAYORQUE in state 47 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 47 resolved as shift
+WARNING: shift/reduce conflict for AND in state 47 resolved as shift
+WARNING: shift/reduce conflict for OR in state 47 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 48 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 48 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 48 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 48 resolved as shift
+WARNING: shift/reduce conflict for MODULO in state 48 resolved as shift
+WARNING: shift/reduce conflict for MENORQUE in state 48 resolved as shift
+WARNING: shift/reduce conflict for MAYORQUE in state 48 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 48 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 48 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 48 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 48 resolved as shift
+WARNING: shift/reduce conflict for AND in state 48 resolved as shift
+WARNING: shift/reduce conflict for OR in state 48 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 49 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 49 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 49 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 49 resolved as shift
+WARNING: shift/reduce conflict for MODULO in state 49 resolved as shift
+WARNING: shift/reduce conflict for MENORQUE in state 49 resolved as shift
+WARNING: shift/reduce conflict for MAYORQUE in state 49 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 49 resolved as shift
+WARNING: shift/reduce conflict for AND in state 49 resolved as shift
+WARNING: shift/reduce conflict for OR in state 49 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 50 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 50 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 50 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 50 resolved as shift
+WARNING: shift/reduce conflict for MODULO in state 50 resolved as shift
+WARNING: shift/reduce conflict for MENORQUE in state 50 resolved as shift
+WARNING: shift/reduce conflict for MAYORQUE in state 50 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 50 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 50 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 50 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 50 resolved as shift
+WARNING: shift/reduce conflict for AND in state 50 resolved as shift
+WARNING: shift/reduce conflict for OR in state 50 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 51 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 51 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 51 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 51 resolved as shift
+WARNING: shift/reduce conflict for MODULO in state 51 resolved as shift
+WARNING: shift/reduce conflict for MENORQUE in state 51 resolved as shift
+WARNING: shift/reduce conflict for MAYORQUE in state 51 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 51 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 51 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 51 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 51 resolved as shift
+WARNING: shift/reduce conflict for AND in state 51 resolved as shift
+WARNING: shift/reduce conflict for OR in state 51 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 52 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 52 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 52 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 52 resolved as shift
+WARNING: shift/reduce conflict for MODULO in state 52 resolved as shift
+WARNING: shift/reduce conflict for MENORQUE in state 52 resolved as shift
+WARNING: shift/reduce conflict for MAYORQUE in state 52 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 52 resolved as shift
+WARNING: shift/reduce conflict for AND in state 52 resolved as shift
+WARNING: shift/reduce conflict for OR in state 52 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 53 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 53 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 53 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 53 resolved as shift
+WARNING: shift/reduce conflict for MODULO in state 53 resolved as shift
+WARNING: shift/reduce conflict for MENORQUE in state 53 resolved as shift
+WARNING: shift/reduce conflict for MAYORQUE in state 53 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 53 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 53 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 53 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 53 resolved as shift
+WARNING: shift/reduce conflict for AND in state 53 resolved as shift
+WARNING: shift/reduce conflict for OR in state 53 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 54 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 54 resolved as shift
+WARNING: shift/reduce conflict for MULT in state 54 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 54 resolved as shift
+WARNING: shift/reduce conflict for MODULO in state 54 resolved as shift
+WARNING: shift/reduce conflict for MENORQUE in state 54 resolved as shift
+WARNING: shift/reduce conflict for MAYORQUE in state 54 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 54 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 54 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 54 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 54 resolved as shift
+WARNING: shift/reduce conflict for AND in state 54 resolved as shift
+WARNING: shift/reduce conflict for OR in state 54 resolved as shift
